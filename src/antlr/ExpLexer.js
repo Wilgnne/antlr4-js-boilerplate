@@ -1,4 +1,4 @@
-// Generated from Exp.g4 by ANTLR 4.9.1
+// Generated from src/grammars/Exp.g4 by ANTLR 4.9.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

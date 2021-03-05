@@ -1,7 +1,7 @@
 {
-  "name": "antlr4-js-boilerplate",
+  "name": "antlr4-ts-boilerplate",
   "version": "1.0.0",
-  "main": "compiler.js",
+  "main": "src/compiler.js",
   "license": "MIT",
   "type": "module",
   "author": {
@@ -9,11 +9,22 @@
     "name": "Vitor Gomes",
     "url": "https://github.com/vitoorgomes"
   },
+  "contributors": [
+    {
+      "email": "wilgnne.kba@gmail.com",
+      "name": "Wilgnne Khawan",
+      "url": "https://github.com/wilgnne"
+    }
+  ],
   "scripts": {
-    "ant": "java -jar antlr-4.9.1-complete.jar -Dlanguage=JavaScript -no-listener Exp.g4",
-    "postant": "node ./compiler.js > Test.j",
-    "jasmin": "java -jar jasmin.jar Test.j",
-    "postjasmin": "java -cp . Test"
+    "install": "npm run ant && mkdir -p build",
+    "ant": "java -jar bin/antlr-4.9.1-complete.jar -Dlanguage=JavaScript -no-listener -o tmp src/grammars/Exp.g4",
+    "postant": "mv tmp/src/grammars/* src/antlr && rm -r tmp",
+    "prestart": "npm run ant",
+    "start": "node . > build/Test.j",
+    "poststart": "npm run jasmin",
+    "jasmin": "java -jar bin/jasmin.jar build/Test.j -d build",
+    "postjasmin": "java -cp build/ Test"
   },
   "dependencies": {
     "antlr4": "^4.9.1"

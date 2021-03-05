@@ -21,16 +21,37 @@ npm install
 
 An script is already done, so running one command line is enough to run everything at once
 
-`yarn ant`
+```bash
+yarn start [input_file.txt]
+```
+e.g
+```bash
+yarn start entries.txt
+```
 
-If you want to change it, just remove the `postant` from script and run manually:
-- `yarn ant`
-- `node ./compiler.js`
+The script consists of three main steps
 
-After that, a `Test.j` will be generated and to run this another script is ready to use:
-- `yarn jasmin`
+### ant
+Consists of using the grammar file (`src/grammars/Exp.g4`) to generate the lexer and parser scripts,
+which will be stored in the `src/antlr` folder.
 
-Running this command will get the result logged into the console
+```bash
+yarn ant
+```
+
+### compiler
+With the lexer and parser scripts created, we can then build our jvm assembly, for this we execute the compilation script, passing as argument our program.
+
+```bash
+yarn start entries.txt
+```
+
+### jasmin
+Having the assembly in hand we can then assemble our program using jasmin.
+
+```bash
+yarn jasmin
+```
 
 ## License
 
