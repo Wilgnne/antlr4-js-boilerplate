@@ -1,5 +1,5 @@
 {
-  "name": "antlr4-ts-boilerplate",
+  "name": "antlr4-js-boilerplate",
   "version": "1.0.0",
   "main": "src/compiler.js",
   "license": "MIT",
